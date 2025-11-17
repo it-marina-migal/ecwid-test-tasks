@@ -1,4 +1,4 @@
-package com.ecwid.deepcopy.test_classes;
+package com.ecwid.deepcopy.objects;
 
 import java.util.List;
 

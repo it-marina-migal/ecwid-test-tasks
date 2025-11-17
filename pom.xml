@@ -48,7 +48,15 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <mainClass>com.ecwid.deepcopy.DeepCopy</mainClass>
+                    <mainClass>com.ecwid.deepcopy.Main</mainClass>
+                    <arguments>
+                        <argument>--add-opens</argument>
+                        <argument>java.base/jdk.internal.reflect=ALL-UNNAMED</argument>
+                        <argument>--add-opens</argument>
+                        <argument>java.base/java.lang=ALL-UNNAMED</argument>
+                        <argument>--add-opens</argument>
+                        <argument>java.base/java.util=ALL-UNNAMED</argument>
+                    </arguments>
                 </configuration>
             </plugin>
 
@@ -59,6 +67,11 @@
                 <version>3.5.4</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <argLine>
+                        --add-opens java.base/jdk.internal.reflect=ALL-UNNAMED
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>
