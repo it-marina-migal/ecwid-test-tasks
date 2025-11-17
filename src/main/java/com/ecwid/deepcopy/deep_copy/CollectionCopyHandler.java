@@ -1,7 +1,9 @@
 package com.ecwid.deepcopy.deep_copy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,10 +37,10 @@ public class CollectionCopyHandler implements CopyHandler {
 
     private static Collection<Object> createEmptyCollectionInstance(Collection<?> collection) {
         return switch (collection) {
-            case List<?> ignored -> new java.util.ArrayList<>();
-            case Set<?> ignored -> new java.util.HashSet<>();
             case Deque<?> ignored -> new LinkedList<>();
             case Queue<?> ignored -> new LinkedList<>();
+            case List<?> ignored -> new ArrayList<>();
+            case Set<?> ignored -> new HashSet<>();
             default -> throw new UnsupportedOperationException(
                     UNSUPPORTED_COLLECTION_TYPE + collection.getClass().getName());
         };

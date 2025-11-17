@@ -1,45 +1,45 @@
-# Deep Clone
+# Deep Copy
 
-Deep Clone — это утилита для выполнения **глубокого копирования объектов** в Java.  
-Проект поддерживает копирование массивов, коллекций, карт, а также произвольных пользовательских объектов с учётом циклических ссылок.
+Deep Copy is a utility for performing **deep copying of objects** in Java.  
+The project supports copying arrays, collections, maps, as well as arbitrary user-defined objects, including handling of cyclic references.
 
 ---
 
-## ✨ Возможности
-- Глубокое копирование любых Java‑объектов
-- Поддержка:
-    - массивов
-    - `Optional` 
+## ✨ Features
+- Deep cloning of any Java objects
+- Support for:
+    - arrays
+    - `Optional`
     - `UUID`
-    - коллекций (`List`, `Set`, `Queue`)
-    - карт (`Map`, `HashMap`, `TreeMap`, `LinkedHashMap`)
-    - объектов с вложенными полями
-- Обработка циклических ссылок через `IdentityHashMap`
-- Расширяемая архитектура: можно добавлять собственные `CopyHandler` для специфических типов
+    - collections (`List`, `Set`, `Queue`, `Dequeue`)
+    - maps (`Map`, `HashMap`, `TreeMap`, `LinkedHashMap`)
+    - objects with nested fields
+- Handling of cyclic references using `IdentityHashMap`
+- Extensible architecture: you can add custom `CopyHandler` implementations for specific types
 
 ---
 
-## ⚙️ Требования
-- Java 21+ 
-- Maven для сборки
+## ⚙️ Requirements
+- Java 21+
+- Maven for build
 
 ---
 
-## 🚀 Запуск
+## 🚀 Running
 
-Для корректной работы с приватными полями JDK необходимо открыть некоторые пакеты модуля `java.base`.  
-Запускать приложение нужно с дополнительными аргументами JVM:
+To work correctly with private JDK fields, you need to open certain packages of the `java.base` module.  
+Run the application with additional JVM arguments:
 
 ```bash
 java \
   -Djava.base/jdk.internal.reflect=ALL-UNNAMED \
   -Djava.base/java.lang=ALL-UNNAMED \
   -Djava.base/java.util=ALL-UNNAMED \
-  -jar target/deep-clone.jar
+  -jar target/deep-copy.jar
 ```
 
-### Запуск через Maven exec-maven-plugin
-Также можно запускать проект напрямую через Maven, используя плагин exec-maven-plugin:
+### Running via Maven exec-maven-plugin
+You can also run the project directly through Maven using the exec-maven-plugin:
 
 ```bash
 mvn clean compile exec:java \
@@ -50,16 +50,17 @@ mvn clean compile exec:java \
 --add-opens java.base/java.util=ALL-UNNAMED"
 ```
 
-## 🧪 Тестирование
+---
 
-Для проверки корректности работы реализован набор тестов на JUnit 5:
-  - Копирование массивов
-  - Копирование коллекций и карт
-  - Копирование объектов с вложенными полями
-  - Проверка циклических ссылок
-  - Поддержка Optional и UUID
+## 🧪 Testing
+A set of unit tests using JUnit 5 is implemented to verify correctness:
+- Copying arrays
+- Copying collections and maps
+- Copying objects with nested fields
+- Handling cyclic references
+- Support for Optional and UUID
 
-Запуск тестов:
+Run tests:
 
 ```bash
 mvn test

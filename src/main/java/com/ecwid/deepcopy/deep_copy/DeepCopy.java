@@ -28,9 +28,7 @@ public class DeepCopy {
 
         for (CopyHandler handler : COPY_HANDLERS) {
             if (handler.supports(originalObject)) {
-                Object result = handler.copy(originalObject, context);
-                context.put(originalObject, result);
-                return result;
+                return handler.copy(originalObject, context);
             }
         }
 
